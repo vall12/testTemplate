@@ -1,0 +1,3 @@
+ufs:
+  provider:
+    url: http://ufs-provider-gt-sol-dev-coreplatform-01.apps.ocp.dvpdev.tech/ufs-provider
