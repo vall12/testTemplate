@@ -1,5 +1,6 @@
 package com.platformv.dictionaries.controllers;
 
+import com.platformv.dictionaries.controllers.contracts.DictionariesContract;
 import com.platformv.dictionaries.services.UfsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,14 +24,14 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/dictionary")
-public class DictionaryController {
+public class DictionariesController implements DictionariesContract {
 
     private static final String DICTIONARY_PREFIX = "dictionary/";
 
     private UfsService dictionaryService;
 
     @Autowired
-    public DictionaryController(UfsService dictionaryService) {
+    public DictionariesController(UfsService dictionaryService) {
         this.dictionaryService = dictionaryService;
     }
 
