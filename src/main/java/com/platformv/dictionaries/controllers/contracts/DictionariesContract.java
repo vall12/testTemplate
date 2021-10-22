@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.sbrf.ufs.provider.api.dto.dictionary.CountQueryRequest;
 import ru.sbrf.ufs.provider.api.dto.dictionary.QueryRequest;
 import ru.sbrf.ufs.provider.api.dto.dictionary.Row;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
 @Api(tags = {SwaggerConfig.DICTIONARIES_TAG})
+@EnableSwagger2
 public interface DictionariesContract {
 
     String dictionariesNames = "Примеры наименования справочника:\n" +
