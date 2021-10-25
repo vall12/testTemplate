@@ -16,10 +16,10 @@ imagePullSecrets: dit-msk
 
 env:
 
-  application:
-    spring:
-      ufs:
-        url: http://ufs-provider-gt-sol-dev-coreplatform-01.apps.ocp.dvpdev.tech/ufs-provider
+application:
+  spring:
+    ufs:
+      url: http://ufs-provider-gt-sol-dev-coreplatform-01.apps.ocp.dvpdev.tech/ufs-provider
 
 annotations:
   sidecar.istio.io/inject: 'true'
