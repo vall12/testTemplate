@@ -47,3 +47,7 @@ livenessProbe:
   timeoutSeconds: 10
   failureThreshold: 3
   initialDelaySeconds: 150
+
+namespace: tskkpsss
+
+applicationUrl: dictionaries-demo-tskkpsss.apps.ocp.dvpdev.tech
