@@ -1,5 +1,6 @@
 repository: base.sw.sbc.space/cpr_dev/prototype_dev
 appName: dictionaries-demo
+nexusAppName: helloplatform
 moduleName: dictionaries
 branch: develop
 tag: "0.0.1-SNAPSHOT"

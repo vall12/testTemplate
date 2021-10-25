@@ -24,7 +24,7 @@ spec:
                 path: application-config
       containers:
         - name: "{{ .Values.moduleName }}"
-          image: "{{ .Values.repository }}/{{ .Values.appName }}/{{ .Values.branch }}/{{ .Values.modulePostfix }}/{{ .Values.appName }}:{{ .Values.tag }}"
+          image: "{{ .Values.repository }}/{{ .Values.nexusAppName }}/{{ .Values.branch }}/{{ .Values.nexusAppName }}:{{ .Values.tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
