@@ -48,6 +48,8 @@ livenessProbe:
   failureThreshold: 3
   initialDelaySeconds: 150
 
+namingSuffix: stable
+
 namespace: tskkpsss
 
 applicationUrl: dictionaries-demo-tskkpsss.apps.ocp.dvpdev.tech
