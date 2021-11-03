@@ -1,7 +1,7 @@
 #!groovy
 // -*- coding: utf-8; mode: Groovy; -*-
 
-@Library('shared-pipeline@feature/PLAT-4675_pipeline_splitting')_
+@Library('shared-pipeline@master')_
 
 env.NEXUS_CRED = "tuz_cpr_dvp_jenkins" // Creds for Nexus
 env.NEXUS3_URL = "base.sw.sbc.space/cpr_dev/prototype_dev" // Nexus registry URL
