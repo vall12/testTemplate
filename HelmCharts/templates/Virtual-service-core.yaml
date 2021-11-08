@@ -1,0 +1,22 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: {{ .Values.moduleName }}-vs-{{ .Values.namingSuffix }}
+  labels:
+    app: {{ .Values.moduleName }}-vs-{{ .Values.namingSuffix }}
+spec:
+  exportTo:
+    - .
+  gateways:
+    - "ingressgateway-synthetic-{{ .Values.namingSuffix }}"
+  hosts:
+    - "{{ .Values.applicationUrl }}"
+  http:
+    - match:
+        - uri:
+            prefix: /api
+      route:
+        - destination:
+            host: "{{ .Values.moduleName }}.{{ .Values.namespace }}.svc.cluster.local"
+            port:
+              number: 8080

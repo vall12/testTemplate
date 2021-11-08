@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: "{{ .Values.moduleName }}"
+  labels:
+    app: "{{ .Values.moduleName }}"
+spec:
+  selector:
+    app: "{{ .Values.moduleName }}"
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

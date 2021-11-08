@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: "{{ .Values.moduleName }}"
+spec:
+  selector:
+    matchLabels:
+      app:  "{{ .Values.moduleName }}"
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.moduleName }}"
+        version: v1
+      annotations:
+        {{- toYaml .Values.annotations | nindent 8 }}
+    spec:
+      volumes:
+        - name: "{{ .Values.moduleName }}-properties-configmap"
+          configMap:
+            name: "{{ .Values.moduleName }}-properties-configmap"
+            items:
+              - key: application-config
+                path: application-config
+      containers:
+        - name: "{{ .Values.moduleName }}"
+          image: "{{ .Values.repository }}/{{ .Values.nexusAppName }}/{{ .Values.branch }}/{{ .Values.nexusAppName }}:{{ .Values.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          volumeMounts:
+            - name:  "{{ .Values.moduleName }}-properties-configmap"
+              mountPath: /app/config/application.yml
+              subPath: application-config
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
