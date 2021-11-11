@@ -38,7 +38,7 @@ spec:
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           volumeMounts:
-            - name:  "{{ .Values.appName }}-properties-configmap"
+            - name: "{{ .Values.appName }}-properties-configmap"
               mountPath: /app/config/application.yml
               subPath: application-config
       imagePullSecrets:
