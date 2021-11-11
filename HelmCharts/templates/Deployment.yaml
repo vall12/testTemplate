@@ -16,9 +16,9 @@ spec:
         {{- toYaml .Values.annotations | nindent 8 }}
     spec:
       volumes:
-        - name: "{{ .Values.moduleName }}-properties-configmap"
+        - name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}"
           configMap:
-            name: "{{ .Values.moduleName }}-properties-configmap"
+            name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}"
             items:
               - key: application-config
                 path: application-config
