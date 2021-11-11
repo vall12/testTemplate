@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: "{{ .Values.appName }}-properties-configmap"
+  name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}-properties"
 data:
   application-config: |-
     {{- toYaml .Values.application | nindent 4 }}
