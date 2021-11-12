@@ -5,7 +5,7 @@ metadata:
   labels:
     app: helloplatform-dictionaries
 spec:
-  host: hello-tskkpsss.apps.ocp.dvpdev.tech
+  host: dictionaries-demo-tskkpsss.apps.ocp.dvpdev.tech
   to:
     kind: Service
     name: helloplatform-dictionaries
