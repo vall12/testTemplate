@@ -16,9 +16,9 @@ spec:
         {{- toYaml .Values.annotations | nindent 8 }}
     spec:
       volumes:
-        - name: "{{ .Values.moduleName }}-properties-configmap"
+        - name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}-properties"
           configMap:
-            name: "{{ .Values.moduleName }}-properties-configmap"
+            name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}-properties"
             items:
               - key: application-config
                 path: application-config
@@ -38,7 +38,7 @@ spec:
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           volumeMounts:
-            - name:  "{{ .Values.moduleName }}-properties-configmap"
+            - name: "{{ .Values.kuberObjectDelimiter }}-{{ .Values.appName }}-properties"
               mountPath: /app/config/application.yml
               subPath: application-config
       imagePullSecrets:
