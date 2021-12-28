@@ -57,5 +57,10 @@ public class DictionariesController implements DictionariesContract {
         return dictionaryService.get(uriBuilder.toUriString(), Row[].class);
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello Platform V";
+    }
+
 
 }
