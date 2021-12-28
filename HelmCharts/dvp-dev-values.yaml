@@ -1,7 +1,7 @@
 repository: base.sw.sbc.space/cpr_dev/prototype_dev
-appName: dictionaries-demo
+appName: helloplatform
 nexusAppName: helloplatform
-moduleName: helloplatform-dictionaries
+moduleName: helloplatform
 branch: develop
 tag: "0.0.1-SNAPSHOT"
 
@@ -53,4 +53,4 @@ namingSuffix: stable
 
 namespace: tskkpsss
 
-applicationUrl: dictionaries-demo-tskkpsss.apps.ocp.dvpdev.tech
+applicationUrl: helloplatform-tskkpsss.apps.ocp.dvpdev.tech

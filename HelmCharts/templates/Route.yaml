@@ -1,14 +1,14 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: helloplatf
+  name: helloplatform
   labels:
-    app: helloplatform-dictionaries
+    app: helloplatform
 spec:
-  host: dictionaries-demo-tskkpsss.apps.ocp.dvpdev.tech
+  host: helloplatform-tskkpsss.apps.ocp.dvpdev.tech
   to:
     kind: Service
-    name: helloplatform-dictionaries
+    name: helloplatform
     weight: 100
   port:
     targetPort: http
