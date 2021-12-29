@@ -62,4 +62,5 @@ public class DictionariesController implements DictionariesContract {
         return "Hello Platform V";
     }
 
+
 }
