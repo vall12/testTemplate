@@ -20,7 +20,7 @@ env:
 application:
   spring:
     ufs:
-      url: http://ufs-provider-gt-sol-dev-coreplatform-01.apps.ocp.dvpdev.tech/ufs-provider
+      url: http://ufs-provider-fis-gt-sol-test-coreplatform-01.apps.ocp.bootcampsdp.tech/ufs-provider
 
 annotations:
   sidecar.istio.io/inject: 'true'
@@ -51,7 +51,7 @@ livenessProbe:
 
 namingSuffix: stable
 
-namespace: tskkpsss
+namespace: gt-sol-test-synt-02
 
 
-applicationUrl: helloplatform-tskkpsss.apps.ocp.dvpdev.tech
+applicationUrl: helloplatform-gt-sol-test-synt-02.apps.ocp.bootcampsdp.tech
