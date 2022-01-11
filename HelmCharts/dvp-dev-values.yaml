@@ -2,7 +2,7 @@ repository: base.sw.sbc.space/cpr_dev/prototype_dev
 appName: helloplatform
 nexusAppName: helloplatform
 moduleName: helloplatform
-branch: develop
+branch: release/bootcamp
 tag: "0.0.1-SNAPSHOT"
 
 resources:
