@@ -5,7 +5,7 @@ metadata:
   labels:
     app: helloplatform
 spec:
-  host: helloplatform-tskkpsss.apps.ocp.dvpdev.tech
+  host: {{ .Values.applicationUrl }}
   to:
     kind: Service
     name: helloplatform
