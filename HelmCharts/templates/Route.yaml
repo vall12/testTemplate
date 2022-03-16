@@ -1,14 +1,14 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: helloplatform
+  name: {{ .Values.app.name }}
   labels:
-    app: helloplatform
+    app: {{ .Values.app.name }}
 spec:
-  host: helloplatform-tskkpsss.apps.ocp.dvpdev.tech
+  host: {{ .Values.app.name }}-{{ .Values.deploy.namespace }}.{{ .Values.deploy.host}}
   to:
     kind: Service
-    name: helloplatform
+    name: {{ .Values.app.name }}
     weight: 100
   port:
     targetPort: http
