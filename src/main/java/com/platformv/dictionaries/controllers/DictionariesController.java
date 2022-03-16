@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/dictionary")
-public class DictionariesController {
+public class DictionariesController implements DictionariesContract {
 
     private static final String DICTIONARY_PREFIX = "dictionary/";
 

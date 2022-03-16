@@ -1,5 +1,9 @@
 #!groovy
 // -*- coding: utf-8; mode: Groovy; -*-
-@Library('shared-pipeline@tags/2.1.0')_
-def pipelineArgs = ['namespace':'tskkpsss']
-pipelineCIJavaV2(pipelineArgs)
+@Library('shared-pipeline@master')_
+
+env.NEXUS_CRED = "tuz_cpr_dvp_jenkins" // Creds for Nexus
+env.JENKINS_CI_AGENT = "10.10.1.126" // Agent for pipeline execution
+env.NEXUS3_URL = "base.sw.sbc.space/cpr_dev/prototype_dev" // Nexus registry URL
+
+pipelineCIJava ()

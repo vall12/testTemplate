@@ -1,0 +1,57 @@
+repository: base.sw.sbc.space/cpr_dev/prototype_dev
+appName: helloplatform
+nexusAppName: helloplatform
+moduleName: helloplatform
+branch: release/bootcamp
+tag: "0.0.1-SNAPSHOT"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 1024Mi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+imagePullSecrets: dit-msk
+
+env:
+
+application:
+  spring:
+    ufs:
+      url: http://ufs-provider-fis-gt-sol-test-coreplatform-01.apps.ocp.bootcampsdp.tech/ufs-provider
+
+annotations:
+  sidecar.istio.io/inject: 'true'
+  sidecar.istio.io/proxyLimitsCPU: 200m
+  sidecar.istio.io/proxyLimitsMemory: 300Mi
+  sidecar.istio.io/proxyRequestsCPU: 50m
+  sidecar.istio.io/proxyRequestsMemory: 150Mi
+
+readinessProbe:
+  httpGet:
+    path: /api/actuator/health
+    port: 8080
+    scheme: HTTP
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 3
+  initialDelaySeconds: 150
+
+livenessProbe:
+  httpGet:
+    path: /api/actuator/health
+    port: 8080
+    scheme: HTTP
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 3
+  initialDelaySeconds: 150
+
+namingSuffix: stable
+
+namespace: gt-sol-test-synt-02
+
+
+applicationUrl: helloplatform-gt-sol-test-synt-02.apps.ocp.bootcampsdp.tech
