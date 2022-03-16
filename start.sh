@@ -1,3 +1,3 @@
-docker build -t dictionaries-img -f docker/Dockerfile .
-docker stop dictionaries-demo || true && docker rm dictionaries-demo || true
-docker run -p 8080:8080 --name dictionaries-demo dictionaries-img
+docker build -t helloplatform -f docker/Dockerfile .
+docker stop helloplatform || true && docker rm helloplatform || true
+docker run -p 8080:8080 --name helloplatform helloplatform
