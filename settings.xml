@@ -3,13 +3,13 @@
     <servers>
         <server>
             <id>id_maven</id>
-            <username>LOGIN</username>
-            <password>PASSWORD</password>
+            <username>gt_sandbox_user_16</username>
+            <password>G6tQw3rx</password>
         </server>
         <server>
             <id>public</id>
-            <username>LOGIN</username>
-            <password>PASSWORD</password>
+            <username>gt_sandbox_user_16</username>
+            <password>G6tQw3rx</password>
         </server>
     </servers>
     <profiles>
