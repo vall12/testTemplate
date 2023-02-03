@@ -3,15 +3,11 @@
     <servers>
         <server>
             <id>id_maven</id>
-            <username>gt_sandbox_user_16</username>
-            <password>G6tQw3rx</password>
-        </server>
-        <server>
-            <id>public</id>
-            <username>gt_sandbox_user_16</username>
-            <password>G6tQw3rx</password>
+            <username>Login</username>
+            <password>Password</password>
         </server>
     </servers>
+
     <profiles>
         <profile>
             <id>id_maven</id>
@@ -19,6 +15,18 @@
                 <repository>
                     <id>id_maven</id>
                     <url>https://works.v-serv.ru/nexus-ci/repository/id_maven/</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <name>Default Repository</name>
+                    <layout>default</layout>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
                 </repository>
             </repositories>
         </profile>

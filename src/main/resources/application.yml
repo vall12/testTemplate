@@ -1,20 +1,15 @@
 server:
-  servlet:
-    context-path: /api
   error:
     include-message: always
   max-http-header-size: 40KB
+  port: 8080
 
 management:
   server:
-    port: 8080
+    port: 8081
   endpoint:
     health.show-details: always
   endpoints:
     web:
       exposure:
-        include: 'info,health,env,mappings'
-
-ufs:
-  provider:
-    url: http://ufs-provider-gt-sol-dev-coreplatform-01.apps.ocp.dvpdev.tech/ufs-provider
+        include: "health"

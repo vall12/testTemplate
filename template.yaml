@@ -1,0 +1,131 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: "${APP_NAME}"
+metadata:
+  name: demo-template
+  annotations:
+    description: "Шаблон для деплоя демо-проектов"
+    tags: demos
+objects:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: "${APP_NAME}-properties"
+    data:
+      application-config:
+        "spring:
+          ufs:
+            url: http://ufs-provider-gt-sol-test-coreplatform-01.apps.ocp.test.bootcamp.tech/ufs-provider"
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: "${APP_NAME}"
+    spec:
+      replicas: 1
+      paused: false
+      revisionHistoryLimit: 1
+      template:
+        metadata:
+          labels:
+            app: "${APP_NAME}"
+            version: v1
+        spec:
+          volumes:
+            - name: "${APP_NAME}-properties"
+              configMap:
+                name: "${APP_NAME}-properties"
+                items:
+                    - key: application-config
+                      path: application-config
+          containers:
+            - name: "${APP_NAME}"
+              image: "works.v-serv.ru:444/sandbox-docker/gt_sandbox_${USER}_docker/${APP_NAME}:${VERSION}"
+              imagePullPolicy: Always
+              ports:
+                - containerPort: 8080
+                  protocol: TCP
+              resources:
+                limits:
+                  cpu: 200m
+                  memory: 1024Mi
+                requests:
+                  cpu: 100m
+                  memory: 512Mi
+              startupProbe:
+                httpGet:
+                  path: /actuator/health
+                  port: 8081
+                  scheme: HTTP
+                periodSeconds: 15
+                timeoutSeconds: 3
+                failureThreshold: 6
+                initialDelaySeconds: 60
+              livenessProbe:
+                httpGet:
+                  path: /actuator/health
+                  port: 8081
+                  scheme: HTTP
+                periodSeconds: 10
+                timeoutSeconds: 10
+                failureThreshold: 3
+                initialDelaySeconds: 5
+              readinessProbe:
+                httpGet:
+                  path: /actuator/health
+                  port: 8081
+                  scheme: HTTP
+                periodSeconds: 10
+                timeoutSeconds: 10
+                failureThreshold: 3
+                initialDelaySeconds: 5
+              volumeMounts:
+                - name: "${APP_NAME}-properties"
+                  mountPath: /app/config/application.yml
+                  subPath: application-config
+          imagePullSecrets:
+            - name: tuz-bootcamp-sandbox
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: "${APP_NAME}"
+      labels:
+        app: "${APP_NAME}"
+    spec:
+      to:
+        kind: Service
+        name: "${APP_NAME}"
+        weight: 100
+      port:
+        targetPort: http
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: "${APP_NAME}"
+      labels:
+        app: "${APP_NAME}"
+    spec:
+      selector:
+        app: "${APP_NAME}"
+      ports:
+        - name: http
+          protocol: TCP
+          port: 8080
+          targetPort: 8080
+        - name: http-actuator
+          port: 8081
+          targetPort: 8081
+      type: LoadBalancer
+parameters:
+  - description: Name of your application
+    from: '[A-Za-z0-9]+(-?[A-Za-z0-9]*)*'
+    generate: expression
+    name: APP_NAME
+  - description: Version of docker image in registry
+    from: '([0-9]+.?)+'
+    generate: expression
+    name: VERSION
+  - description: Number of user account
+    from: '[0-9][0-9]'
+    generate: expression
+    name: USER

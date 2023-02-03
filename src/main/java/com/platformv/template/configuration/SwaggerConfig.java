@@ -1,4 +1,4 @@
-package com.platformv.dictionaries.configuration;
+package com.platformv.template.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    public static final String DICTIONARIES_TAG = "Справочники";
+    public static final String HELLO_WORLD_TAG = "Знакомство";
 
     @Bean
     public Docket api() {
@@ -29,8 +29,8 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
-                .title("Hello World приложение на Platform V, с использованием сервиса Dictionaries")
-                .version("0.0.1")
+                .title("Hello World приложение на Platform V")
+                .version("0.1")
                 .build();
     }
 }

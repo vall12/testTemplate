@@ -1,11 +1,11 @@
-package com.platformv.dictionaries;
+package com.platformv.template;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DictionariesRestApplication {
+public class TemplateApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DictionariesRestApplication.class, args);
+        SpringApplication.run(TemplateApplication.class, args);
     }
 }
